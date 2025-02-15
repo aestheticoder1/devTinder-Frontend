@@ -6,19 +6,19 @@ import { BASE_URL } from "../utils/constants";
 
 const Premium = () => {
     const [isUserPremium, setIsUserPremium] = useState(false);
-      useEffect(() => {
+    useEffect(() => {
         verifyPremiumUser();
-      }, []);
+    }, []);
 
-      const verifyPremiumUser = async () => {
+    const verifyPremiumUser = async () => {
         const res = await axios.get(BASE_URL + "/premium/verify", {
-          withCredentials: true,
+            withCredentials: true,
         });
 
         if (res.data.isPremium) {
-          setIsUserPremium(true);
+            setIsUserPremium(true);
         }
-      };
+    };
 
     const handleBuyClick = async (type) => {
         const order = await axios.post(
@@ -53,7 +53,9 @@ const Premium = () => {
         rzp.open();
     };
     return isUserPremium ? (
-        "You're are already a premium user"
+        <h1 className="flex justify-center my-10">
+            You are already a premium user
+        </h1>
     ) : (
         <div className="m-10">
             <div className="flex w-full">
